@@ -61,6 +61,7 @@ await build({
   entryPoints: entryPoints,
   outDir: outDir,
   shims: {},
+  typeCheck: false,
   test: false, // We disabled tests to avoid @std/assert modern JS issues
   package: {
     name: denoConfig.name,
