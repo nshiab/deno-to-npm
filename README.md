@@ -1,6 +1,6 @@
 # deno-to-npm
 
-A simple script to transform a Deno library to an NPM library.
+A simple script to transform a Deno library to a NPM library.
 
 ## Maintenance
 
