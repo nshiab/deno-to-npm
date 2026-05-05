@@ -1,0 +1,14 @@
+{
+  "name": "@nshiab/deno-to-npm",
+  "version": "0.0.2",
+  "exports": "./main.ts",
+  "tasks": {
+    "patch": "deno run -A jsr:@nshiab/bump-version patch",
+    "minor": "deno run -A jsr:@nshiab/bump-version minor",
+    "major": "deno run -A jsr:@nshiab/bump-version major"
+  },
+  "license": "MIT",
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.42.3"
+  }
+}
