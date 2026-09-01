@@ -71,6 +71,8 @@ await build({
     },
     // deno-lint-ignore no-explicit-any
     description: (denoConfig as any).description,
+    // deno-lint-ignore no-explicit-any
+    keywords: (denoConfig as any).keywords,
     license: denoConfig.license,
     repository: {
       type: "git",
@@ -79,7 +81,7 @@ await build({
     },
   },
   postBuild() {
-    // Wrap these in try/catch just in case a repo doesn't have a LICENSE or README
+    // Wrap these in try/catch just in case a repo doesn't have a LICENSE or README.
     try {
       Deno.copyFileSync(join(cwd, "LICENSE"), join(outDir, "LICENSE"));
       Deno.copyFileSync(join(cwd, "README.md"), join(outDir, "README.md"));
@@ -87,6 +89,18 @@ await build({
       console.warn(
         "⚠️  Note: Could not copy LICENSE or README.md. Are they in the root?",
       );
+    }
+
+    // Include optional agent-readable documentation when the source project
+    // generates it.
+    for (const filename of ["llm.md", "llms.txt"]) {
+      try {
+        Deno.copyFileSync(join(cwd, filename), join(outDir, filename));
+      } catch (error) {
+        if (!(error instanceof Deno.errors.NotFound)) {
+          throw error;
+        }
+      }
     }
   },
 });

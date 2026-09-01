@@ -1,6 +1,9 @@
 # deno-to-npm
 
-A simple script to transform a Deno library to a NPM library.
+A simple script to transform a Deno library into an npm package. Package
+descriptions, keywords, licenses, and repositories are copied from `deno.json`.
+The generated package also includes `README.md`, `LICENSE`, and optional
+agent-readable `llm.md` and `llms.txt` files when present.
 
 ## Maintenance
 
